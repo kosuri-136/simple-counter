@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Counter Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    .btn-container {
+      margin-top: 20px;
+    }
+
+    .btn {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="counter">0</h1>
+
+  <div class="btn-container">
+    <button class="btn" onclick="startCounter()">Start</button>
+    <button class="btn" onclick="stopCounter()">Stop</button>
+    <button class="btn" onclick="resetCounter()">Reset</button>
+  </div>
+
+  <script>
+    let intervalId;
+    let count = 0;
+
+    const counterElement = document.getElementById('counter');
+
+    function startCounter() {
+      clearInterval(intervalId);
+      intervalId = setInterval(() => {
+        count++;
+        counterElement.textContent = count;
+        if (count === 1000) {
+          clearInterval(intervalId);
+        }
+      }, 1000);
+    }
+
+    function stopCounter() {
+      clearInterval(intervalId);
+    }
+
+    function resetCounter() {
+      clearInterval(intervalId);
+      count = 0;
+      counterElement.textContent = count;
+    }
+  </script>
+</body>
+</html>
